@@ -12,15 +12,20 @@ include_once ($moduleDir . $modulename . '.php');
 $moduleobj = new $modulename;
 $moduleVars = get_object_vars($moduleobj);
 echo '<pre>';
+
 $adb = PearDatabase::getInstance();
 if (isset($moduleVars['customFieldTable'][0])) {
     $result1 = $adb->query('DROP TABLE ' . $moduleVars['customFieldTable'][0]);
     if ($result1 != false) {
         $result2 = $adb->query('DROP TABLE ' . $moduleVars['table_name']);
+        $result3 = $adb->query('DELETE FROM vtiger_field where fieldid IN (SELECT fieldid FROM vtiger_fieldmodulerel WHERE relmodule="'.$modulename.'")');
     }
 }
+//var_dump($adb);
+$isRemoved = false;
 if ($result2 != false) {
-    $isRemoved = rename($moduleDir, $moduleDirRenamed);
+    if (file_exists($moduleDir))
+        $isRemoved = rename($moduleDir, $moduleDirRenamed);
 }
 
 if ($isRemoved) {
