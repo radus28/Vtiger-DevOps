@@ -33,6 +33,12 @@ if (isset($tabInfo['isentitytype']) == false) {// wrong module name passed
         }
     }
 }
+
+$module = Vtiger_Module::getInstance($modulename);
+if ($module) {
+    $module->delete();
+}
+
 //var_dump($adb);
 $isRemoved = false; // removing module folder
 if ($result2 != false) {
@@ -43,13 +49,6 @@ if ($result2 != false) {
         $isRemovedSet = rename($moduleSettingDir, $moduleSettingDirRenamed);
         $isRemovedLaySet = rename($layoutSettDir, $layoutSettDirRenamed);
         $adb->pquery('DELETE FROM vtiger_settings_field WHERE name=?', array('LBL_ADVANCED_MENU_MANAGER_CONFIG'));
-    }
-}
-
-if ($isRemoved) {
-    $module = Vtiger_Module::getInstance($modulename);
-    if ($module) {
-        $module->delete();
     }
 }
 ?>
