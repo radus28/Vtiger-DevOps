@@ -32,7 +32,7 @@ if (isset($tabInfo['isentitytype']) == false) {// wrong module name passed
         $result1 = $adb->query('DROP TABLE ' . $moduleVars['customFieldTable'][0]);
         if ($result1 != false) {
             $result2 = $adb->query('DROP TABLE ' . $moduleVars['table_name']);
-            $result2 = $adb->query('DROP TABLE ' . $moduleVars['table_name'].'_user_field');
+            $result2 = $adb->query('DROP TABLE ' . $moduleVars['table_name'] . '_user_field');
             $result3 = $adb->query('DELETE FROM vtiger_field where fieldid IN (SELECT fieldid FROM vtiger_fieldmodulerel WHERE relmodule="' . $modulename . '")');
         }
     }
@@ -43,20 +43,21 @@ if (isset($tabInfo['isentitytype']) == false) {// wrong module name passed
 //var_dump($adb);
 $isRemoved = false; // removing module folder
 if ($result2 != false) {
-    chmod($moduleDir,0777);
-    chmod($moduleSettingDir,0777);
-    if (file_exists($moduleDir))
+
+    if (file_exists($moduleDir)) {
+        chmod($moduleDir, 0777);
         $isRemoved = rename($moduleDir, $moduleDirRenamed);
+    }
     $isRemovedLay = rename($layoutDir, $layoutDirRenamed);
-    if ($tabInfo['isentitytype'] == '0') {// if extension
+    if (file_exists($moduleSettingDir)) {
+        chmod($moduleSettingDir, 0777);
         $isRemovedSet = rename($moduleSettingDir, $moduleSettingDirRenamed);
+    }
         $isRemovedLaySet = rename($layoutSettDir, $layoutSettDirRenamed);
         $adb->pquery('DELETE FROM vtiger_settings_field WHERE name=?', array('LBL_ADVANCED_MENU_MANAGER_CONFIG'));
     }
-}
 $module = Vtiger_Module::getInstance($modulename);
 if ($module) {
     $module->delete();
 }
-
 ?>
