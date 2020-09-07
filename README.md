@@ -1,3 +1,27 @@
+# Vtiger Development
+
+## Creating custom module
+// update content
+### Adding fields to module
+// update content
+### Set Related module (Related Tab) to a module
+// update content
+## Workflows
+Create workflows :  Settings > Automation > Workflows,  Choose module, then click "Add Workflow" button
+// update content
+### Update fields
+// update content
+### Send email
+// update content
+### Create Entity
+// update content
+### Custom function
+Use below script to register a custom function
+https://github.com/radus28/vt.training/tree/master/register-customfunctions
+
+// update content
+
+
 # vtlib.scripts
 Using vtlib library for common tasks such as add fields, set relation ship for vtiger crm
 
