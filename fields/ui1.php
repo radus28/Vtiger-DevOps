@@ -21,6 +21,8 @@ $fieldInstance->column = 'street_test';
 $fieldInstance->columntype = 'varchar(100)';
 //text uitype = 1
 $fieldInstance->uitype = 1; // or uitype = 19 (For Description or Comments)
+// Use 2 to hide from edit view
+$fieldInstance->displaytype = 1;
 $fieldInstance->typeofdata = 'V~O';
 $blockInstance->addField($fieldInstance);
 }
