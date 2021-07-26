@@ -9,8 +9,9 @@ These scripts available in this repo are extended vtlib (App's native library) t
 
   * Databases : for SQL scripts to do common tasks/changes in vtiger
   * fields : add custom fields
-  * set-related-lists : adding related module to a parent module
+  * set-related-lists : adding related module to a parent module. Example of Related Module is Contact under Organization.
   * register-custom-function : Registering a PHP script as vtiger workflow custom function
+    ** CreateInventoryViaAPI.php - The class file which can be used to create Vtiger Inventoyr modules such as Quotes, Invoices and PurchaseOrder through vtiger WebServices
   
    Folder structure  described below  is maintained in the [Migrations](https://github.com/radus28/v71base/tree/master/migrations) folder of the app. This scripts can be executed using browser. Example http://localhost/v72train/migrations/fields/newFields.php
 
