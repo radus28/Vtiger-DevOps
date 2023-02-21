@@ -1,0 +1,23 @@
+<?php
+$endpointurl = 'https://localhost/crm/modules/Mobile/api.php'; // You crm url appended with modules/Mobile/api.php
+
+$postlist = array(
+    '_operation' => 'login',
+    'username' => 'Jegan',//'User',
+    'password' => 'B#ddddd'//use password and NOT AccessToken
+);
+
+$loginResp = getResponseFromURL($endpointurl, $postlist);
+$resp = json_decode($loginResp,true);
+$session = $resp['result']['login']['session'];
+
+ $postlist = array(
+     '_operation' => 'fetchRecord',
+     '_session' => $session,
+     'crmid'=>'911'
+ );
+
+
+$taskResp = getResponseFromURL($endpointurl, $postlist);
+$resp = json_decode($taskResp,true);
+echo '<pre>';var_dump($resp);exit;
