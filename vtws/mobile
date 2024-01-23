@@ -11,13 +11,27 @@ $loginResp = getResponseFromURL($endpointurl, $postlist);
 $resp = json_decode($loginResp,true);
 $session = $resp['result']['login']['session'];
 
+/**
+* Fetch a single record
+**/
  $postlist = array(
      '_operation' => 'fetchRecord',
      '_session' => $session,
      'crmid'=>'911'
  );
-
-
 $taskResp = getResponseFromURL($endpointurl, $postlist);
 $resp = json_decode($taskResp,true);
 echo '<pre>';var_dump($resp);exit;
+
+/**
+ * Query with Events module example
+ */
+$postlist = array(
+    '_operation' => 'query',
+    '_session' => $session,
+    'query' => "SELECT * FROM Events WHERE activitytype='Visits';"
+);
+$taskResp = getResponseFromURL($endpointurl, $postlist);
+$resp = json_decode($taskResp,true);
+echo '<pre>';var_dump($resp); 
+exit;
