@@ -28,6 +28,22 @@ Example,
 * Add required comments in the code
 * Add how to use notes under wiki
 
+## VTWS - Vtiger Web service
+
+### File Retrieve
+
+The web services vtws_file_retrieve exist in vtiger core, but not exposed as webservice. Run below sql to expose File retrieve service
+
+``
+UPDATE `vtiger_ws_operation_seq` SET `id` = (id+1);
+
+INSERT INTO `vtiger_ws_operation` (`operationid`, `name`, `handler_path`, `handler_method`, `type`, `prelogin`) VALUES ((SELECT id FROM `vtiger_ws_operation_seq`), 'file_retrieve', 'include/Webservices/FileRetrieve.php', 'vtws_file_retrieve', 'GET', '0');
+
+INSERT INTO `vtiger_ws_operation_parameters` (`operationid`, `name`, `type`, `sequence`) VALUES 
+((SELECT id FROM `vtiger_ws_operation_seq`), 'file_id', 'String', '1')
+
+``
+
 ### References
 * https://wiki.vtiger.com/index.php/Vtlib
 * https://wiki.vtiger.com/index.php/CodingGuidelines
