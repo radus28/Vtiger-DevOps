@@ -18,3 +18,5 @@ Then liftoff extension
 Then clear cache
 
 ``npm cache clean --force``
+
+Further in the Gruntfile.js, you may add / remove .css files under less.development.files section
