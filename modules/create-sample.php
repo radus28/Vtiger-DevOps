@@ -7,10 +7,10 @@ set_include_path($root_directory); //for include root path
 include_once ('vtlib/tools/console.php');
 
 $moduleInformation = [
-    'name' => 'Trialmodule',
-    'parent' => 'SALES',
-    'entityfieldname' => 'tm_name',
-    'entityfieldlabel' => 'TM Name',
+    'name' => 'Trialmodule',//  Change YOUR MODULE NAME
+    'parent' => 'SALES',// CHANGE PARENT TAB
+    'entityfieldname' => 'tm_name', // CHANGE KEY FIELD OF the module
+    'entityfieldlabel' => 'TM Name', // CHANGE LABLE OF KEY FIELD
 
 ];
 class Radus_ModuleController extends Vtiger_Tools_Console_ModuleController
