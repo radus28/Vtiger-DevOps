@@ -21,7 +21,7 @@ class Radus_ModuleController extends Vtiger_Tools_Console_ModuleController
     {
         $controller = new Vtiger_Tools_Console_RemoveController();
         $controller->setArguments([$moduleInformation], FALSE)->handle();
-        return ' <br> Module ' . $moduleInformation[0] . ' removed successfully';
+        return ' <br> Module ' . $moduleInformation . ' removed successfully';
     }
 }
 /**
