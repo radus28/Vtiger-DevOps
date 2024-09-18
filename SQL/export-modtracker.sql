@@ -1,4 +1,4 @@
-SELECT mb.id,mb.crmid,mb.module, mb.changedon, md.fieldname, md.prevalue AS last_value,md.postvalue AS new_value,
+SELECT mb.id,mb.crmid,mb.module, mb.changedon, md.fieldname, md.prevalue AS lastvalue, md.postvalue AS newvalue,
  u.user_name,CONCAT (u.first_name, " ",u.last_name) AS Changedby,
 ce.label,   
 mr.targetmodule AS relatedmodule,mr.targetid AS related_crmid
