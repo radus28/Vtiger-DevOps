@@ -1,9 +1,11 @@
 <?php
+include_once ('../../config.inc.php');
 ini_set('error_reporting', E_ALL & ~E_WARNING & ~E_NOTICE & ~E_DEPRECATED);
 ini_set('display_errors', '1');
-include_once ('../../config.inc.php');
+
 global $root_directory, $adb;
 set_include_path($root_directory); //for include root path
+require 'vendor/autoload.php';
 include_once ('vtlib/tools/console.php');
 
 $moduleInformation = [
