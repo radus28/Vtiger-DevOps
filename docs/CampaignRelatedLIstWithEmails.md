@@ -40,6 +40,22 @@ foreach($childModules as $childModule){
 
 ```
 
+## Create tables for each related module
+
+Example
+
+```
+CREATE TABLE `vtiger_campaignhostfamilyrel` (
+  `campaignid` int NOT NULL DEFAULT '0',
+  `hostfamilyid` int NOT NULL DEFAULT '0',
+  `campaignrelstatusid` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`campaignid`,`hostfamilyid`,`campaignrelstatusid`),
+  KEY `campaignhostfamilyrel_hostfamilyid_campaignid_idx` (`hostfamilyid`,`campaignid`),
+  CONSTRAINT `fk_2_vtiger_campaignhostfamilyrel` FOREIGN KEY (`hostfamilyid`) REFERENCES `vtiger_hostfamily` (`hostfamilyid`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+```
+
 ## Update Campaign Class
 
 Update following to `` modules/Campaigns/Campaign.php``
@@ -180,20 +196,6 @@ In ``` getQueryByModuleField() ``` add
 
 ```case 'HostFamily'  : $tableName = 'vtiger_campaignhostfamilyrel'; $relatedFieldName = 'hostfamilyid';     break;```
 
-## Create tables for each related module
 
-Example
-
-```
-CREATE TABLE `vtiger_campaignhostfamilyrel` (
-  `campaignid` int NOT NULL DEFAULT '0',
-  `hostfamilyid` int NOT NULL DEFAULT '0',
-  `campaignrelstatusid` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`campaignid`,`hostfamilyid`,`campaignrelstatusid`),
-  KEY `campaignhostfamilyrel_hostfamilyid_campaignid_idx` (`hostfamilyid`,`campaignid`),
-  CONSTRAINT `fk_2_vtiger_campaignhostfamilyrel` FOREIGN KEY (`hostfamilyid`) REFERENCES `vtiger_hostfamily` (`hostfamilyid`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-```
 
 
